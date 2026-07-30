@@ -25,7 +25,8 @@
     <div class="govuk-grid-column-two-thirds">
 
   
-      <form class="form" action="/special-requirements-3" method="post">
+      <!--take out the 'action' to let the JS code run-->
+      <form class="form" method="post">
 
 <!--text area-->
 
@@ -45,11 +46,6 @@
   }
 }) }}
 
-<!--error message-->
-{{ govukErrorMessage({
-  text: "Rhowch eich enw llawn",
-  visuallyHiddenText: "Gwall"
-}) }}
 
 {{ govukButton({
   text: "Save and continue"

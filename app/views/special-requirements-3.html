@@ -15,31 +15,76 @@
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
   {% from "govuk/components/button/macro.njk" import govukButton %}
-  {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+    {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
 
-  
-      <form class="form" action="/date-input-4" method="post">
+<!--radio buttons-->
 
-<!--text area-->
-
-{{ govukTextarea({
-  name: "xxx",
-  value: data["xxx"] ,
-  id: "location",
-  label: {
-    text: "special requirements",
-    classes: "govuk-label--l",
-    isPageHeading: true
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  name: "special-needs",
+  value: data["special-needs"],
+  fieldset: {
+    legend: {
+      text: "Do you have any special requirements?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
   },
-  hint: {
-    text: "special input"
-  }
+  items: [
+    {
+      value: "yes",
+      text: "yes"
+    },
+    {
+      value: "no",
+      text: "no"
+    }
+    
+  ]
 }) }}
 
 
+{% if showDataField %}
+  {{ govukTextarea({
+        name: "special-needs-info",
+        label: {
+          text: "Please tell us about your requirements"
+            },errorMessage: error and {
+              text: "Enter details of your requirements"}
+              })
+                }}
+{% endif %}
+
+
+<!-- OLD CODE
+{{ govukTextarea({
+  name: "special-needs-info",
+  value: data["special-needs-info"] ,
+  classes: "hidden-field",
+  errorMessage: error and {
+        text: "Please enter information into the text box provided"},
+  id: "special-needs-info",
+  label: {
+    text: "Please provide details of your special requirements",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  },
+  hint: {
+    text: "For example, if you have a disability or require an interpreter."
+  }
+}) }}
+-->
+
+<!--button must be within form-->
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
 
 
       </form>
@@ -50,9 +95,7 @@
 
 
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+
 
 {% endblock %}
 

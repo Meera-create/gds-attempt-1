@@ -13,32 +13,37 @@
 
 {% block content %}
 
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
   {% from "govuk/components/button/macro.njk" import govukButton %}
-  {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+  {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
 
   <h1>date input page</h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
   
-      <form class="form" action="/date-input-4" method="post">
+      <form class="form" method="post">
 
-<!--text area-->
+<!--date input-->
 
-{{ govukTextarea({
-  name: "location-choice",
-  value: data["location-choice"] ,
-  id: "location-choice",
-  label: {
-    text: "date input",
-    classes: "govuk-label--l",
-    isPageHeading: true
+{{ govukDateInput({
+  id: "vaccine-date",
+  namePrefix: "vaccine-date",
+  fieldset: {
+    legend: {
+      text: "When would you like to book your vaccination appointment?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
   },
   hint: {
-    text: "XXXX"
+    text: "For example, 27 08 2026"
   }
 }) }}
+
+
 
 
 
