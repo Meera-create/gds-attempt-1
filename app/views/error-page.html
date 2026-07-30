@@ -1,32 +1,29 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  GOV.UK page template – {{ Homepage }} – GOV.UK Prototype Kit
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
 {% endblock %}
 
 {% block content %}
-
-
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        GOV UK Services
+        Error - You cannot access this service
       </h1>
 
       <p>
-        Use this page to access any GOV UK Service. 
-
+        You are not eligible to access this service - You must be 65 or over to access this service.
+        Read <a href="https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/">advice</a> on where you can get vaccinated.
       </p>
-
-      <ul>
-        <li><a>Visa applications</a></li>
-        <li><a>Benefits information and applications</a></li>
-        <li><a>Education and learning</a></li>
-        <li><a href="/bookinghome">Health services</a></li>
-        <li><a>Employment and jobs</a></li>
-      </ul>
 
       
 
@@ -38,7 +35,11 @@
         </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
-
+            <li>
+              <a href="/home-gov">
+                Home
+              </a>
+            </li>
             <li>
               <a href="#">
                 Help
@@ -54,8 +55,5 @@
       </aside>
 
   </div>
-
-
-
 
 {% endblock %}

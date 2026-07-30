@@ -1,0 +1,78 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        User booking information
+      </h1>
+
+      <form class="form" action="/question-2-location" method="post">
+
+
+
+
+
+
+<!--radio button-->
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  name: "age-question",
+  value: data["age-question"],
+ 
+   
+
+  fieldset: {
+    legend: {
+      text: "Are you aged 65 or over?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "yes"
+    },
+    {
+      value: "no",
+      text: "no"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Save and continue"
+  
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock %}
+
+ 

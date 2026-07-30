@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/error-message/macro.njk" import govukErrorMessage %}
+
+
+
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  
+      <form class="form" action="/special-requirements-3" method="post">
+
+<!--text area-->
+
+{{ govukTextarea({
+  name: "location-choice",
+  value: data["location-choice"] ,
+  errorMessage: error and {
+        text: "Please type in a clinic name or postcode"},
+  id: "location-choice",
+  label: {
+    text: "Please enter name of the clinic or hospital you would like to have your vaccination",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "You can name any GP surgery, health centre or hospital in the UK"
+  }
+}) }}
+
+<!--error message-->
+{{ govukErrorMessage({
+  text: "Rhowch eich enw llawn",
+  visuallyHiddenText: "Gwall"
+}) }}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock %}
+
+ 
