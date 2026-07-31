@@ -40,7 +40,7 @@ router.post('/question-2-location', function (req, res){
 
 //text box to appear if user selects yes to special needs question
 router.post('/special-requirements-3', function (req, res){
- 
+ console.log('route works')
   let specialNeeds = req.body['special-needs'];
   let specialNeedsInfo = req.body['special-needs-info'];
 
@@ -64,19 +64,18 @@ router.post('/special-requirements-3', function (req, res){
 
 
 router.post('/date-input-4', function (req, res) {
-  console.log('ROUTE HIT');
-  console.log('hi')
- // let day = req.body['vaccine-date-day'];
-  //let month = req.body['vaccine-date-month'];
-  //let year = req.body['vaccine-date-year'];
+console.log('jiii')
+let day = req.body['vaccine-date-day'];
+let month = req.body['vaccine-date-month'];
+let year = req.body['vaccine-date-year'];
 
-
- // if (!day || !month || !year) {
-   // return res.render('date-input-4', {
-     // error: true
- //   });
- // } 
-    return res.redirect('/error-page');
+if(!day || !month || !year || day.trim() === '' || month.trim() === '' || year.trim() === ''){
+return res.render('/date-input-4', {
+  error: true,
+  data: req.body
 })
-
-
+}
+else {
+  return res.redirect('/check-my-answers');
+}
+});
