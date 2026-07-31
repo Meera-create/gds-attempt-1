@@ -59,23 +59,46 @@
           ,
           {
             key: {
-              text: "Question 3"
+              text: "Do you have any special needs or requirements?"
             },
             value: {
-              text: "Answer 3"
+              text: data["special-needs"] + " - " + data["special-needs-info"]
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/special-requirements-3",
                   text: "Change",
-                  visuallyHiddenText: "Question 3"
+                  visuallyHiddenText: "special needs or requirements"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Chosen date for your vaccination appointment"
+            },
+            value: {
+              html: 
+              
+                "Day: "+ data["vaccine-date-day"] + " <br>
+                Month: "+ data["vaccine-date-month"] + " <br>
+                Year: " + data["vaccine-date-year"]
+                  
+            },
+            actions: {
+              items: [
+                {
+                  href: "/date-input-4",
+                  text: "Change",
+                  visuallyHiddenText: "your chosen vaccination date"
                 }
               ]
             }
           }
         ]
-      }) }}
+      })
+     }}
 
       <h2 class="govuk-heading-m">
         Now send your application
