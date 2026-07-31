@@ -38,29 +38,45 @@ router.post('/question-2-location', function (req, res){
 
 
 
+//text box to appear if user selects yes to special needs question
 router.post('/special-requirements-3', function (req, res){
-
  
   let specialNeeds = req.body['special-needs'];
   let specialNeedsInfo = req.body['special-needs-info'];
 
-
  if (specialNeeds === 'yes') {
      if (!specialNeedsInfo || specialNeedsInfo.trim() === '') {
-       return res.render('special-requirements-3', {
+       return res.render('/special-requirements-3', {
         showDataField: true,
         error: true
       }); 
+    } else{
+      return res.redirect('/date-input-4');
     }
+  }else{    
     return res.redirect('/date-input-4');
   }
-   return res.render('special-requirements-3');
   });
 
  
+//date input validation
 
 
 
+router.post('/date-input-4', function (req, res) {
+  console.log('ROUTE HIT');
+  console.log('hi')
+ // let day = req.body['vaccine-date-day'];
+  //let month = req.body['vaccine-date-month'];
+  //let year = req.body['vaccine-date-year'];
 
 
-// Add your routes here
+ // if (!day || !month || !year) {
+   // return res.render('date-input-4', {
+     // error: true
+ //   });
+ // } 
+    return res.redirect('/error-page');
+})
+
+

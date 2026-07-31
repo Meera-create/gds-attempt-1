@@ -24,13 +24,21 @@
     <div class="govuk-grid-column-two-thirds">
 
   
-      <form class="form" method="post">
+      <form class="form" action="/check-my-answers" method="post">
 
 <!--date input-->
 
 {{ govukDateInput({
   id: "vaccine-date",
   namePrefix: "vaccine-date",
+  values: {
+    day: data["vaccine-date-day"],
+    month: data["vaccine-date-month"],
+    year: data["vaccine-date-year"]
+  },
+  errorMessage: error and {
+      text: "Enter a date for your vaccination appointment"},
+
   fieldset: {
     legend: {
       text: "When would you like to book your vaccination appointment?",
@@ -46,6 +54,9 @@
 
 
 
+{{ govukButton({
+  text: "Save and continue"
+}) }}
 
 
       </form>
@@ -56,9 +67,6 @@
 
 
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
 
 {% endblock %}
 
